@@ -30,5 +30,5 @@ resource "aws_instance" "App2" {
     tags = {
         Name = "App2Machine"
     }
-    key_name = "terrraform-ec2"
+    key_name = "terraform-ec2"
 }
