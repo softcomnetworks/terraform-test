@@ -1,2 +1,2 @@
 # terrafor-test
-this is a test terraform template to deploy aws infrastructure
+This is a test terraform template to deploy aws infrastructure
