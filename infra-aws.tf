@@ -22,6 +22,7 @@ resource "aws_instance" "App1" {
     tags = {
         Name = "App1Machine"    
     }
+    key_name = "terraform-ec2"
 }
 
 resource "aws_instance" "App2" {
@@ -31,4 +32,5 @@ resource "aws_instance" "App2" {
     tags = {
         Name = "App2Machine"
     }
+    key_name = "terrraform-ec2"
 }
