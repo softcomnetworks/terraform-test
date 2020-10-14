@@ -20,3 +20,12 @@ resource "aws_instance" "App1" {
     ami = "ami-05c424d59413a2876"
     key_name = "terraform-test-machines"
 }
+
+resource "aws_instance" "App2" {
+    instance_type = "t2.micro"
+    ami = "ami-05c424d59413a2876"
+    key_name = "terraform-test-machines"
+    tags {
+        Name = "App2Machine"
+    }
+}
