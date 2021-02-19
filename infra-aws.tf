@@ -33,7 +33,7 @@ provider "aws" {
 #     key_name = "terraform-ec2"
 # }
 
-resource "aws_s3_bucket" "onebucket" {
+resource "aws_s3_bucket" "starbucket" {
    bucket = "testing-s3-with-terraform"
    acl = "private"
    versioning {
