@@ -48,7 +48,7 @@ resource "aws_s3_bucket" "starbucket" {
 
 variable "s3_bucket_name1" {
    type = "list"
-   default = ["terr-ash-buc-1", "terr-ash-buc-1", "terr-ash-buc-1"]
+   default = ["terr-ashfaq-buc-1", "terr-ashfaq-buc-2", "terr-ashfaq-buc-3"]
 }
 resource "aws_s3_bucket" "henrys_bucket_jjuue" {
    count = "${length(var.s3_bucket_name1)}"
