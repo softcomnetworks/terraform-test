@@ -44,3 +44,18 @@ resource "aws_s3_bucket" "starbucket" {
      Environment = "Test"
    }
 }
+
+
+variable "s3_bucket_name1" {
+   type = "list"
+   default = ["terr-ash-buc-1", "terr-ash-buc-1", "terr-ash-buc-1"]
+}
+resource "aws_s3_bucket" "henrys_bucket" {
+   count = "${length(var.s3_bucket_name1)}"
+   bucket = "${var.s3_bucket_name1[count.index]}"
+   acl = "private"
+   versioning {
+      enabled = true
+   }
+   force_destroy = "true"
+}
