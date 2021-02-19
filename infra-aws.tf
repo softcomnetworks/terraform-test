@@ -34,7 +34,7 @@ provider "aws" {
 # }
 
 resource "aws_s3_bucket" "starbucket" {
-   bucket = "testing-s3-with-terraform"
+   bucket = "mybucketokirjt"
    acl = "private"
    versioning {
       enabled = true
