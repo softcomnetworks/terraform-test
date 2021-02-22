@@ -80,7 +80,7 @@ variable "vip_bucket_retention_period" {
   description = "desc2"
   default = 4  
 }
-
+/*
 # S3 bucket for storing extracts as cache
 resource "aws_s3_bucket" "vip_bucket" {
     bucket = "${var.environment_id}-vip-bucket-jjuuhf"
@@ -100,7 +100,7 @@ resource "aws_s3_bucket" "vip_bucket" {
 
 # S3 bucket policy for GP2GP extract cache bucket.
 
-resource "aws_s3_bucket_policy" "vip_bucket_policy_jjfuhr" {
+resource "aws_s3_bucket_policy" "vip_bucket_policy" {
   bucket = aws_s3_bucket.vip_bucket.id
 
   policy = jsonencode(
@@ -137,8 +137,8 @@ resource "aws_s3_bucket_public_access_block" "vip_bucket_public_access_block_sdf
   # Need to make sure not to try and disable public access at the same time as adding the
   # bucket policy, as trying to do both at the same time results in an error.
   depends_on = [
-    aws_s3_bucket_policy.vip_bucket_policy_jjfuhr
+    aws_s3_bucket_policy.vip_bucket_policy
   ]
 }
-
+*/
 ########
