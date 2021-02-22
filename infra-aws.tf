@@ -14,7 +14,7 @@ provider "aws" {
     region = "eu-west-2"
     
 }
-
+#
 # resource "aws_instance" "App01" {
 #     instance_type = "t2.micro"
 #     ami = "ami-05c424d59413a2876"
