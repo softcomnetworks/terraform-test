@@ -100,7 +100,7 @@ resource "aws_s3_bucket" "vip_bucket" {
 
 # S3 bucket policy for GP2GP extract cache bucket.
 
-resource "aws_s3_bucket_policy" "vip_bucket_policy" {
+resource "aws_s3_bucket_policy" "vip_bucket_policy_jjfuhr" {
   bucket = aws_s3_bucket.vip_bucket.id
 
   policy = jsonencode(
@@ -137,7 +137,7 @@ resource "aws_s3_bucket_public_access_block" "vip_bucket_public_access_block" {
   # Need to make sure not to try and disable public access at the same time as adding the
   # bucket policy, as trying to do both at the same time results in an error.
   depends_on = [
-    aws_s3_bucket_policy.vip_bucket_policy
+    aws_s3_bucket_policy.vip_bucket_policy_jjfuhr
   ]
 }
 
