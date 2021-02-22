@@ -83,18 +83,19 @@ variable "vip_bucket_retention_period" {
 
 # S3 bucket for storing extracts as cache
 resource "aws_s3_bucket" "vip_bucket" {
-  bucket = "${var.environment_id}-vip-bucket-jjuuhf"
-
-  tags = {
-    Name = "${var.environment_id}-vip-bucket-jjuuhf"
-    EnvironmentId = var.environment_id
-  }
-  lifecycle_rule {
-    id      = "cache_retention_period"
-    enabled = true
-    expiration {
-      days = var.vip_bucket_retention_period
+    bucket = "${var.environment_id}-vip-bucket-jjuuhf"
+    tags = {
+        Name = "${var.environment_id}-vip-bucket-jjuuhf"
+        EnvironmentId = var.environment_id
     }
+    lifecycle_rule {
+        id      = "cache_retention_period"
+        enabled = true
+        expiration {
+            days = var.vip_bucket_retention_period
+        }
+    }
+       
 }
 
 # S3 bucket policy for GP2GP extract cache bucket.
