@@ -78,7 +78,7 @@ variable "environment_id" {
 variable "vip_bucket_retention_period" {
   type = number
   description = "desc2"
-  default = 3  
+  default = 4  
 }
 
 # S3 bucket for storing extracts as cache
