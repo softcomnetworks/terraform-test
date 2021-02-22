@@ -105,11 +105,11 @@ resource "aws_s3_bucket_policy" "vip_bucket_policy_jjfuhr" {
 
   policy = jsonencode(
   {
-    Id = "GP2GPExtractCacheBucketPolicy"
+    Id = "GP2GPExtractCacheBucketPolicyssdf232ew"
     Version = "2012-10-17"
     Statement = [
       {
-        Sid = "AllowECSTaskRole"
+        Sid = "AllowECSTaskRole234qwerfsdf"
         Effect = "Allow"
         Action = [
           "s3:PutObject",
@@ -126,7 +126,7 @@ resource "aws_s3_bucket_policy" "vip_bucket_policy_jjfuhr" {
 }
 
 # Disable any public access to bucket
-resource "aws_s3_bucket_public_access_block" "vip_bucket_public_access_block" {
+resource "aws_s3_bucket_public_access_block" "vip_bucket_public_access_block_sdfwer234w" {
   bucket = aws_s3_bucket.vip_bucket.id
 
   block_public_acls = true
