@@ -80,7 +80,7 @@ variable "vip_bucket_retention_period" {
   description = "desc2"
   default = 4  
 }
-/*
+
 # S3 bucket for storing extracts as cache
 resource "aws_s3_bucket" "vip_bucket" {
     bucket = "${var.environment_id}-vip-bucket-jjuuhf"
@@ -140,5 +140,5 @@ resource "aws_s3_bucket_public_access_block" "vip_bucket_public_access_block_sdf
     aws_s3_bucket_policy.vip_bucket_policy
   ]
 }
-*/
+
 ########
