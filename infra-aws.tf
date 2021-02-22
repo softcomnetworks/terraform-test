@@ -115,7 +115,7 @@ resource "aws_s3_bucket_policy" "vip_bucket_policy_jjfuhr" {
           "s3:PutObject",
           "s3:GetObject"
         ]
-        Resource = aws_s3_bucket.vip_bucket.arn  ##"arn:aws:s3:::${vip_bucket.bucket}/*"
+        Resource = "${aws_s3_bucket.vip_bucket.arn}/*"  ##"arn:aws:s3:::${vip_bucket.bucket}/*"
         Principal = {
           AWS = data.aws_iam_role.ecs_service_task_role.arn
         }
