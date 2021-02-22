@@ -59,3 +59,85 @@ provider "aws" {
 #   }
 #   force_destroy = "true"
 #}
+
+
+# S3 bucket for storing extracts as cache
+#vip_bucket_uujrut
+
+#
+data "aws_iam_role" "ecs_service_task_role" {
+  name = "ecsInstanceRole"
+}
+
+variable "environment_id" {
+  type = string
+  description = "desc"
+  default = "build4"
+}
+
+variable "vip_bucket_retention_period" {
+  type = number
+  description = "desc2"
+  default = 7  
+}
+
+# S3 bucket for storing extracts as cache
+resource "aws_s3_bucket" "vip_bucket" {
+  bucket = "${var.environment_id}-vip-bucket-jjuuhf"
+
+  tags = {
+    Name = "${var.environment_id}-vip-bucket-jjuuhf"
+    EnvironmentId = var.environment_id
+  }
+  lifecycle_rule {
+    id      = "cache_retention_period"
+    enabled = true
+    expiration {
+      days = var.vip_bucket_retention_period
+    }
+}
+
+# S3 bucket policy for GP2GP extract cache bucket.
+
+resource "aws_s3_bucket_policy" "vip_bucket_policy" {
+  bucket = aws_s3_bucket.vip_bucket.id
+
+  policy = jsonencode(
+  {
+    Id = "GP2GPExtractCacheBucketPolicy"
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid = "AllowECSTaskRole"
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:GetObject"
+        ]
+        Resource = "arn:aws:s3:::${vip_bucket.bucket}/*"
+        Principal = {
+          AWS = data.aws_iam_role.ecs_service_task_role.arn
+        }
+      }
+    ]
+  }
+  )
+}
+
+# Disable any public access to bucket
+resource "aws_s3_bucket_public_access_block" "vip_bucket_public_access_block" {
+  bucket = aws_s3_bucket.vip_bucket.id
+
+  block_public_acls = true
+  block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
+
+  # Need to make sure not to try and disable public access at the same time as adding the
+  # bucket policy, as trying to do both at the same time results in an error.
+  depends_on = [
+    aws_s3_bucket_policy.vip_bucket_policy
+  ]
+}
+
+########
