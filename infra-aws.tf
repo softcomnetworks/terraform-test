@@ -83,7 +83,7 @@ variable "gp2gp_extract_cache_bucket_retention_period" {
 
 
 ############################################################################################
-#/*
+/*
 # S3 bucket for storing extracts as cache
 resource "aws_s3_bucket" "gp2gp_extract_cache_bucket" {
   bucket = "${var.environment_id}-gp2gp-extract-cache-bucket"
@@ -143,7 +143,7 @@ resource "aws_s3_bucket_public_access_block" "gp2gp_extract_cache_bucket_public_
   ]
 }
 
-#*/
+*/
 ############################################################################################
 /*
 # S3 bucket for storing extracts as cache
